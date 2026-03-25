@@ -1,15 +1,257 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Social Data Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SF Crime: Two Decades of Data Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 3px solid #F56EFE;
+            box-shadow: 0 4px 6px rgba(245, 110, 254, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #F56EFE;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .introduction {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .introduction p {
+            margin-bottom: 15px;
+        }
+
+        /* Grid Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: #16213e;
+            border: 1px solid #F56EFE;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(245, 110, 254, 0.25);
+            border-color: #ff88ff;
+            background-color: #1f2d4d;
+        }
+
+        .card h2 {
+            color: #F56EFE;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover h2 {
+            color: #ff88ff;
+        }
+
+        .card p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            color: #F56EFE;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .card:hover .card-link {
+            color: #ff88ff;
+            margin-right: 5px;
+        }
+
+        /* Visualization Sections */
+        .visualization-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            border-top: 1px solid #F56EFE;
+        }
+
+        .visualization-section h2 {
+            color: #F56EFE;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .visualization-section img {
+            background-color: #16213e;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #F56EFE;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #666;
+            border-top: 1px solid #F56EFE;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .introduction {
+                padding: 30px 15px;
+                font-size: 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+                letter-spacing: 0;
+            }
+
+            header {
+                padding: 40px 15px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hi guys!</h1>
-    <p>This site will soon contain interactive data visualizations about crime in San Francisco. YAYY!</p>
-    <img src="Yearly_crime_trends.svg" alt="Yearly crime trends in SF" style="max-width: 100%;">
-    <img src="Total_crime_counts.svg" alt="Total crime counts in SF" style="max-width: 100%;">
-    <a href="sf_crime_heatmap_time.html">Explore hourly crime patterns →</a>
-    <p>This is another plot, that is interactive</p>
-    <iframe src="Drug_Offense_Ratio.html" width="100%" height="600" frameborder="0"></iframe>
+    <!-- Header -->
+    <header>
+        <h1>SF Crime: Two Decades of Data</h1>
+    </header>
+
+    <!-- Introduction -->
+    <section class="introduction">
+        <p>Explore comprehensive crime data from San Francisco spanning two decades of investigation. This analysis combines temporal patterns, geographic distribution, and categorical crime trends to reveal insights about public safety in the Bay Area.</p>
+        <p>Interact with visualization dashboards below to explore hourly crime patterns, yearly trends, and detailed offense analytics.</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="grid">
+            <!-- Card 1: Yearly Trends -->
+            <a class="card" href="#yearly-trends">
+                <h2>Yearly Crime Trends</h2>
+                <p>Examine how crime rates have evolved over time with a comprehensive view of annual patterns and long-term trajectories.</p>
+                <span class="card-link">View Visualization →</span>
+            </a>
+
+            <!-- Card 2: Crime Counts -->
+            <a class="card" href="#crime-counts">
+                <h2>Total Crime Analysis</h2>
+                <p>Analyze the aggregate crime counts across San Francisco to understand the overall volume and distribution patterns.</p>
+                <span class="card-link">View Analysis →</span>
+            </a>
+
+            <!-- Card 3: Temporal Patterns -->
+            <a class="card" href="sf_crime_heatmap_time.html">
+                <h2>Hourly Crime Patterns</h2>
+                <p>Discover when crime peaks throughout the day with interactive heat maps showing temporal distribution across the city.</p>
+                <span class="card-link">Explore Interactive →</span>
+            </a>
+
+            <!-- Card 4: Drug Offenses -->
+            <a class="card" href="Drug_Offense_Ratio.html">
+                <h2>Drug Offense Analysis</h2>
+                <p>Deep dive into the drug-related crime patterns and their proportion within the broader crime ecosystem.</p>
+                <span class="card-link">View Dashboard →</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Visualizations Section -->
+    <section id="yearly-trends" class="visualization-section">
+        <h2>Yearly Crime Trends</h2>
+        <img src="Yearly_crime_trends.svg" alt="Yearly crime trends in SF" style="max-width: 100%; height: auto;">
+    </section>
+
+    <section id="crime-counts" class="visualization-section">
+        <h2>Total Crime Counts</h2>
+        <img src="Total_crime_counts.svg" alt="Total crime counts in SF" style="max-width: 100%; height: auto;">
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 SF Crime Data Analysis Portfolio | Data-driven insights for urban safety</p>
+    </footer>
 </body>
 </html>
