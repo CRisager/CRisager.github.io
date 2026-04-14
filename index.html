@@ -27,7 +27,7 @@
 
 		body {
 			margin: 0;
-			min-height: 100vh;
+			min-height: 100dvh;
 			display: grid;
 			place-items: center;
 			background: #1f1f1f;
@@ -36,8 +36,13 @@
 		}
 
 		.phone {
-			width: 404px;
-			height: 873.7301635742188px;
+			--phone-w: 404;
+			--phone-h: 873.7301635742188;
+			--viewport-pad: 16px;
+			aspect-ratio: var(--phone-w) / var(--phone-h);
+			height: min(calc(100dvh - (var(--viewport-pad) * 2)), 873.7301635742188px);
+			width: auto;
+			max-width: min(404px, calc(100vw - (var(--viewport-pad) * 2)));
 			border: 1.603px solid var(--line);
 			border-radius: 48.095237731933594px;
 			background: var(--bg-phone);
@@ -484,9 +489,7 @@
 
 		@media (max-width: 480px) {
 			.phone {
-				width: min(404px, 94vw);
-				height: auto;
-				aspect-ratio: 404 / 873.7301635742188;
+				max-width: 94vw;
 				border-radius: 42px;
 			}
 
