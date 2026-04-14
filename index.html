@@ -1,477 +1,1280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SF Crime: Two Decades of Data Analysis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Personal Data - New Recording</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+	<style>
+		:root {
+			--bg-page: #e7e7e7;
+			--bg-phone: #f2f2f2;
+			--bg-surface: #ededed;
+			--ink: #122a2c;
+			--line: #000000;
+			--muted: #666563;
+			--teal-dark: #27636d;
+			--teal-main: #1e8486;
+			--teal-bright: #21afa2;
+			--danger: #ff0000;
+		}
 
-        html {
-            scroll-behavior: smooth;
-        }
+		* {
+			box-sizing: border-box;
+		}
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #160b3a 50%, #0d1f3a 100%);
-            background-attachment: fixed;
-            color: #e0e0e0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			background: #1f1f1f;
+			font-family: "Space Mono", "Courier New", Courier, monospace;
+			color: var(--ink);
+		}
 
-        /* Subtle animated background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(245, 110, 254, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(100, 200, 255, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
+		.phone {
+			width: 404px;
+			height: 873.7301635742188px;
+			border: 1.603px solid var(--line);
+			border-radius: 48.095237731933594px;
+			background: var(--bg-phone);
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+		}
 
-        /* Header Section */
-        header {
-            background: linear-gradient(135deg, #0f0a25 0%, #1a0f3a 100%);
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 2px solid;
-            border-image: linear-gradient(90deg, #F56EFE, #FF006E) 1;
-            box-shadow: 0 8px 32px rgba(245, 110, 254, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
+		.header {
+			height: 60px;
+			display: grid;
+			place-items: center;
+			font-size: 22.44444465637207px;
+			font-weight: 700;
+			letter-spacing: 0.01em;
+			color: #122a2c;
+			background: #ececec;
+		}
 
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #F56EFE, #FF006E, transparent);
-            opacity: 0.6;
-        }
+		.steps {
+			height: 54.51px;
+			display: flex;
+			border-top: 1px solid #dfdfdf;
+			border-bottom: 1px solid #dfdfdf;
+			background: #ededed;
+			overflow: hidden;
+		}
 
-        header h1 {
-            font-size: 3.5rem;
-            background: linear-gradient(135deg, #F56EFE, #FF006E);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            animation: fadeInDown 0.8s ease-out;
-        }
+		.step {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: 0.01em;
+			color: var(--muted);
+			background: #f2f2f2;
+			height: 100%;
+		}
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+		.step:nth-child(1) {
+			width: 149.1px;
+			clip-path: polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%);
+			padding-right: 14px;
+			z-index: 3;
+		}
 
-        .introduction {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 80px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
+		.step:nth-child(2) {
+			width: 149.1px;
+			margin-left: -22px;
+			clip-path: polygon(12% 0, 80% 0, 100% 50%, 80% 100%, 12% 100%, 0 50%);
+			padding-left: 16px;
+			padding-right: 10px;
+			z-index: 2;
+		}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+		.step:nth-child(3) {
+			flex: 1;
+			margin-left: -22px;
+			clip-path: polygon(16% 0, 100% 0, 100% 100%, 16% 100%, 0 50%);
+			padding-left: 18px;
+			z-index: 3;
+		}
 
-        .introduction p {
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-            color: #c0c0c0;
-            line-height: 1.9;
-            font-weight: 300;
-        }
+		.step.active {
+			color: #ffffff;
+			background: var(--teal-main);
+			z-index: 5;
+			text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+		}
 
-        /* Grid Container */
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
+		.content {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			padding: 26px 22px;
+		}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
+		.idle-view,
+		.recording-view,
+		.confirm-view {
+			flex: 1;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 
-        /* Card Styles */
-        .card {
-            position: relative;
-            background: linear-gradient(135deg, rgba(22, 33, 62, 0.8) 0%, rgba(31, 45, 77, 0.8) 100%);
-            border: 1px solid rgba(245, 110, 254, 0.3);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            text-decoration: none;
-            color: inherit;
-            backdrop-filter: blur(10px);
-            animation: slideUp 0.6s ease-out backwards;
-            overflow: hidden;
-        }
+		.idle-view {
+			justify-content: center;
+			gap: clamp(120px, 16vh, 180px);
+		}
 
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
+		.prompt {
+			margin: 0;
+			color: var(--teal-dark);
+			text-align: center;
+			font-weight: 700;
+			line-height: 1.2;
+			font-size: 22.44444465637207px;
+			letter-spacing: 0.01em;
+		}
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+		.play-button {
+			width: 64.13px;
+			aspect-ratio: 1;
+			border: none;
+			border-radius: 50%;
+			background: var(--teal-bright);
+			display: grid;
+			place-items: center;
+			cursor: pointer;
+			box-shadow:
+				0 0 0 0 rgba(33, 175, 162, 0.55),
+				0 10px 20px rgba(0, 0, 0, 0.14);
+			animation: pulse 2.2s infinite;
+		}
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(245, 110, 254, 0.1) 0%, transparent 50%, rgba(100, 200, 255, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-            border-radius: 16px;
-        }
+		.play-button svg {
+			width: 58%;
+			height: 58%;
+			transform: none;
+		}
 
-        .card:hover::before {
-            opacity: 1;
-        }
+		.play-button:active {
+			transform: translateY(1px);
+		}
 
-        .card:hover {
-            transform: translateY(-12px);
-            border-color: #F56EFE;
-            box-shadow: 0 20px 40px rgba(245, 110, 254, 0.3), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                        0 0 20px rgba(245, 110, 254, 0.2);
-        }
+		.recording-view {
+			justify-content: center;
+			padding-top: 42px;
+			padding-bottom: 30px;
+			gap: 28px;
+		}
 
-        .card-icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
+		.confirm-view {
+			justify-content: flex-start;
+			padding-top: 66px;
+			gap: 24px;
+		}
 
-        .card:hover .card-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
+		.confirm-title {
+			margin: 0;
+			font-size: 22.44444465637207px;
+			font-weight: 700;
+			letter-spacing: 0.01em;
+			color: var(--teal-dark);
+		}
 
-        .card h2 {
-            background: linear-gradient(135deg, #F56EFE, #FF006E);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
+		.playback-wrap {
+			width: min(100%, 336px);
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
 
-        .card:hover h2 {
-            background: linear-gradient(135deg, #ff88ff, #FF4081);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+		.preview-play-btn {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			border: none;
+			background: var(--teal-main);
+			display: grid;
+			place-items: center;
+			cursor: pointer;
+			padding: 0;
+		}
 
-        .card p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            flex-grow: 1;
-            position: relative;
-            z-index: 1;
-            line-height: 1.6;
-        }
+		.preview-play-btn svg {
+			width: 58%;
+			height: 58%;
+		}
 
-        .card-link {
-            background: linear-gradient(135deg, #F56EFE, #FF006E);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            position: relative;
-            z-index: 1;
-            font-size: 0.9rem;
-        }
+		.preview-wave {
+			flex: 1;
+			height: 64px;
+			display: grid;
+			place-items: center;
+		}
 
-        .card-link::after {
-            content: '→';
-            transition: transform 0.3s ease;
-        }
+		#previewWaveform {
+			width: 100%;
+			height: 64px;
+		}
 
-        .card:hover .card-link {
-            background: linear-gradient(135deg, #ff88ff, #FF4081);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            gap: 12px;
-        }
+		.preview-time {
+			min-width: 54px;
+			text-align: right;
+			font-size: 16px;
+			color: var(--teal-main);
+		}
 
-        .card:hover .card-link::after {
-            transform: translateX(4px);
-        }
+		#audioPreview {
+			display: none;
+		}
 
-        /* Visualization Sections */
-        .visualization-section {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 100px 20px;
-            border-top: 1px solid rgba(245, 110, 254, 0.2);
-            animation: fadeInUp 0.8s ease-out;
-        }
+		.meta-wrap {
+			width: min(100%, 336px);
+			display: flex;
+			flex-direction: column;
+			gap: 18px;
+		}
 
-        .visualization-section h2 {
-            background: linear-gradient(135deg, #F56EFE, #FF006E);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 700;
-        }
+		.name-row {
+			width: 100%;
+			position: relative;
+		}
 
-        .visualization-section img {
-            background: linear-gradient(135deg, rgba(22, 33, 62, 0.8), rgba(31, 45, 77, 0.8));
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(245, 110, 254, 0.3);
-            box-shadow: 0 8px 32px rgba(245, 110, 254, 0.1);
-            transition: all 0.3s ease;
-            max-width: 50%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
+		.name-input,
+		.category-select {
+			width: 100%;
+			height: 70px;
+			padding: 0 18px;
+			border: none;
+			border-radius: 18px;
+			background: #e7e7e7;
+			font-family: "Space Mono", "Courier New", Courier, monospace;
+			font-size: 20px;
+			letter-spacing: 0.01em;
+			color: var(--teal-main);
+		}
 
-        .visualization-section img:hover {
-            border-color: #F56EFE;
-            box-shadow: 0 16px 48px rgba(245, 110, 254, 0.2);
-            transform: scale(1.01);
-        }
+		.name-input {
+			padding-right: 50px;
+			text-align: center;
+		}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            color: #888;
-            border-top: 1px solid rgba(245, 110, 254, 0.2);
-            margin-top: 80px;
-            font-size: 0.9rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(245, 110, 254, 0.05) 100%);
-        }
+		.edit-name-btn {
+			position: absolute;
+			right: 14px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 28px;
+			height: 28px;
+			border: none;
+			background: transparent;
+			cursor: pointer;
+			display: grid;
+			place-items: center;
+			padding: 0;
+		}
 
-        footer p {
-            margin-bottom: 10px;
-        }
+		.edit-name-btn svg {
+			width: 80%;
+			height: 80%;
+		}
 
-        footer a {
-            background: linear-gradient(135deg, #F56EFE, #FF006E);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+		.name-input:focus,
+		.category-select:focus {
+			outline: 2px solid color-mix(in srgb, var(--teal-main) 55%, white);
+			outline-offset: 1px;
+		}
 
-        footer a:hover {
-            color: #ff88ff;
-        }
+		.category-label {
+			font-size: 15px;
+			color: var(--teal-dark);
+			margin-top: 2px;
+		}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
-                letter-spacing: 0;
-            }
+		.category-select {
+			height: 44px;
+			font-size: 16px;
+			padding-right: 42px;
+			appearance: none;
+			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="%231e8486" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+			background-repeat: no-repeat;
+			background-size: 18px 18px;
+			background-position: right 12px center;
+		}
 
-            header {
-                padding: 60px 20px;
-            }
+		.confirm-actions {
+			margin-top: auto;
+			display: flex;
+			gap: 36px;
+			padding-bottom: 26px;
+		}
 
-            .introduction {
-                padding: 50px 20px;
-            }
+		.action-btn {
+			width: 64.13px;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			border: none;
+			display: grid;
+			place-items: center;
+			cursor: pointer;
+			box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+		}
 
-            .introduction p {
-                font-size: 1rem;
-            }
+		.action-btn svg {
+			width: 42%;
+			height: 42%;
+		}
 
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
+		.action-btn:disabled,
+		.control-btn:disabled,
+		.preview-play-btn:disabled {
+			opacity: 0.55;
+			cursor: not-allowed;
+		}
 
-            .card {
-                padding: 30px;
-            }
+		.action-btn.delete {
+			background: var(--danger);
+		}
 
-            .card h2 {
-                font-size: 1.4rem;
-            }
+		.action-btn.save {
+			background: var(--teal-bright);
+		}
 
-            .card-icon {
-                font-size: 2rem;
-            }
+		.recording-title {
+			margin: 0;
+			font-size: 22.44444465637207px;
+			font-weight: 700;
+			letter-spacing: 0.01em;
+			color: var(--teal-dark);
+		}
 
-            .visualization-section {
-                padding: 60px 20px;
-            }
+		.waveform-wrap {
+			width: min(100%, 336px);
+			height: 90px;
+			display: grid;
+			place-items: center;
+		}
 
-            .visualization-section h2 {
-                font-size: 1.8rem;
-            }
-        }
+		#waveform {
+			width: 100%;
+			height: 90px;
+		}
 
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
+		.timer {
+			margin: 2px 0 0;
+			font-size: 56px;
+			font-weight: 700;
+			letter-spacing: 0.02em;
+			color: #245d66;
+		}
 
-            header {
-                padding: 50px 15px;
-            }
+		.recording-controls {
+			margin-top: 18px;
+			display: flex;
+			gap: 36px;
+		}
 
-            .container {
-                padding: 30px 15px;
-            }
+		.save-status {
+			margin: 0;
+			min-height: 22px;
+			font-size: 13px;
+			line-height: 1.35;
+			color: var(--teal-dark);
+			text-align: center;
+		}
 
-            .card {
-                padding: 20px;
-            }
+		.save-status.error {
+			color: #b10000;
+		}
 
-            .card h2 {
-                font-size: 1.2rem;
-            }
+		.control-btn {
+			width: 64.13px;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			border: none;
+			background: var(--teal-bright);
+			display: grid;
+			place-items: center;
+			cursor: pointer;
+			box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+		}
 
-            .card-icon {
-                font-size: 1.8rem;
-                margin-bottom: 10px;
-            }
+		.control-btn svg {
+			width: 34%;
+			height: 34%;
+		}
 
-            .visualization-section {
-                padding: 40px 15px;
-            }
+		.control-btn:active {
+			transform: translateY(1px);
+		}
 
-            .visualization-section img {
-                padding: 15px;
-            }
-        }
-    </style>
+		.is-recording .play-button {
+			animation: none;
+		}
+
+		[hidden] {
+			display: none !important;
+		}
+
+		@keyframes pulse {
+			0% {
+				box-shadow:
+					0 0 0 0 rgba(33, 175, 162, 0.55),
+					0 10px 20px rgba(0, 0, 0, 0.14);
+			}
+			70% {
+				box-shadow:
+					0 0 0 16px rgba(33, 175, 162, 0),
+					0 10px 20px rgba(0, 0, 0, 0.14);
+			}
+			100% {
+				box-shadow:
+					0 0 0 0 rgba(33, 175, 162, 0),
+					0 10px 20px rgba(0, 0, 0, 0.14);
+			}
+		}
+
+		.bottom-nav {
+			height: 84.96825408935547px;
+			border-top: 1px solid #dddddd;
+			background: #ffffff;
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			align-items: center;
+			justify-items: center;
+			padding: 0 10px;
+		}
+
+		.icon {
+			stroke: var(--teal-dark);
+			fill: none;
+			stroke-width: 2.4;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+
+		.icon.profile,
+		.icon.search {
+			width: 36.873016357421875px;
+			height: 36.873016357421875px;
+		}
+
+		.icon.home {
+			width: 44.04473114013672px;
+			height: 46.49283218383789px;
+		}
+
+		.icon.folder {
+			width: 41.68254089355469px;
+			height: 32.41975402832031px;
+		}
+
+		.record-icon {
+			width: 36.873016357421875px;
+			height: 36.873016357421875px;
+		}
+
+		@media (max-width: 480px) {
+			.phone {
+				width: min(404px, 94vw);
+				height: auto;
+				aspect-ratio: 404 / 873.7301635742188;
+				border-radius: 42px;
+			}
+
+			.header {
+				height: 56px;
+				font-size: 21px;
+			}
+
+			.step {
+				font-size: 13px;
+			}
+
+			.prompt,
+			.recording-title {
+				font-size: 18px;
+			}
+
+			.confirm-title {
+				font-size: 18px;
+			}
+
+			.preview-time {
+				font-size: 13px;
+				min-width: 46px;
+			}
+
+			.name-input,
+			.category-select {
+				height: 54px;
+				font-size: 18px;
+			}
+
+			.category-select {
+				height: 40px;
+				font-size: 15px;
+			}
+
+			.category-label {
+				font-size: 13px;
+			}
+
+			.timer {
+				font-size: 46px;
+			}
+
+			.play-button,
+			.control-btn {
+				width: 52px;
+			}
+		}
+	</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>SF Crime: Two Decades of Data</h1>
-    </header>
+	<main class="phone" aria-label="New recording screen">
+		<header class="header" id="pageTitle">New recording</header>
 
-    <!-- Introduction -->
-    <section class="introduction">
-        <p>Explore comprehensive crime data from San Francisco spanning two decades of investigation. This analysis combines temporal patterns, geographic distribution, and categorical crime trends to reveal insights about public safety in the Bay Area.</p>
-        <p>Interact with visualization dashboards below to explore hourly crime patterns, yearly trends, and detailed offense analytics.</p>
-    </section>
+		<section class="steps" aria-label="Workflow steps">
+			<div class="step active" id="stepRecord">Record</div>
+			<div class="step" id="stepConfirm">Confirm</div>
+			<div class="step" id="stepLearn">Learn</div>
+		</section>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="grid">
-            <!-- Card 1: Yearly Trends -->
-            <a class="card" href="#yearly-trends">
-                <div class="card-icon">📈</div>
-                <h2>Yearly Crime Trends</h2>
-                <p>Examine how crime rates have evolved over time with a comprehensive view of annual patterns and long-term trajectories.</p>
-                <span class="card-link">View Visualization</span>
-            </a>
+		<section class="content">
+			<div class="idle-view" id="idleView">
+				<p class="prompt">Start recording<br />when ready</p>
+				<button class="play-button" id="startButton" aria-label="Start recording">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<rect x="9" y="4" width="6" height="11" rx="3" fill="#ffffff" stroke="none" />
+						<path d="M7 12.5a5 5 0 0 0 10 0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+						<line x1="12" y1="17.5" x2="12" y2="20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+						<line x1="9.5" y1="20" x2="14.5" y2="20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+					</svg>
+				</button>
+			</div>
 
-            <!-- Card 2: Crime Counts -->
-            <a class="card" href="#crime-counts">
-                <div class="card-icon">📊</div>
-                <h2>Total Crime Analysis</h2>
-                <p>Analyze the aggregate crime counts across San Francisco to understand the overall volume and distribution patterns.</p>
-                <span class="card-link">View Analysis</span>
-            </a>
+			<div class="recording-view" id="recordingView" hidden>
+				<p class="recording-title">Recording...</p>
+				<div class="waveform-wrap">
+					<canvas id="waveform" width="336" height="90" aria-label="Live audio waveform"></canvas>
+				</div>
+				<p class="timer" id="timerDisplay">00:00</p>
+				<div class="recording-controls">
+					<button class="control-btn" id="pauseButton" aria-label="Pause recording" title="Pause">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<rect x="6" y="4" width="4.2" height="16" rx="2" fill="#ffffff"></rect>
+							<rect x="13.8" y="4" width="4.2" height="16" rx="2" fill="#ffffff"></rect>
+						</svg>
+					</button>
+					<button class="control-btn" id="stopButton" aria-label="Stop recording" title="Stop">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<rect x="6" y="6" width="12" height="12" rx="2.3" fill="#ffffff"></rect>
+						</svg>
+					</button>
+				</div>
+			</div>
 
-            <!-- Card 3: Temporal Patterns -->
-            <a class="card" href="sf_crime_heatmap_time.html">
-                <div class="card-icon">🕐</div>
-                <h2>Hourly Crime Patterns</h2>
-                <p>Discover when crime peaks throughout the day with interactive heat maps showing temporal distribution across the city.</p>
-                <span class="card-link">Explore Interactive</span>
-            </a>
+			<div class="confirm-view" id="confirmView" hidden>
+				<p class="confirm-title">Save recording</p>
 
-            <!-- Card 4: Drug Offenses -->
-            <a class="card" href="Drug_Offense_Ratio.html">
-                <div class="card-icon">⚠️</div>
-                <h2>Drug Offense Analysis</h2>
-                <p>Deep dive into the drug-related crime patterns and their proportion within the broader crime ecosystem.</p>
-                <span class="card-link">View Dashboard</span>
-            </a>
-        </div>
-    </div>
+				<div class="playback-wrap">
+					<button class="preview-play-btn" id="previewPlayButton" aria-label="Play preview" title="Play preview">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M8 5.5L18 12L8 18.5a2 2 0 0 1-3-1.7V7.2a2 2 0 0 1 3-1.7z" fill="#ffffff"></path>
+						</svg>
+					</button>
+					<div class="preview-wave">
+						<canvas id="previewWaveform" width="246" height="64" aria-label="Preview waveform"></canvas>
+					</div>
+					<p class="preview-time" id="previewTime">00:00</p>
+					<audio id="audioPreview" aria-label="Recorded audio playback"></audio>
+				</div>
 
-    <!-- Visualizations Section -->
-    <section id="yearly-trends" class="visualization-section">
-        <h2>Yearly Crime Trends</h2>
-        <img src="Yearly_crime_trends.svg" alt="Yearly crime trends in SF">
-    </section>
+				<div class="meta-wrap">
+					<div class="name-row">
+						<input
+							id="recordingName"
+							class="name-input"
+							type="text"
+							value="Recording_132"
+							aria-label="Recording name"
+						/>
+						<button class="edit-name-btn" id="editNameButton" aria-label="Edit recording name" title="Edit name">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M4 20h4.2L19 9.2 14.8 5 4 15.8z" fill="none" stroke="#21afa2" stroke-width="2" stroke-linejoin="round"/>
+								<path d="M12.8 7 17 11.2" fill="none" stroke="#21afa2" stroke-width="2" stroke-linecap="round"/>
+							</svg>
+						</button>
+					</div>
 
-    <section id="crime-counts" class="visualization-section">
-        <h2>Total Crime Counts</h2>
-        <img src="Total_crime_counts.svg" alt="Total crime counts in SF">
-    </section>
+					<label class="category-label" for="categorySelect">Category:</label>
+					<select id="categorySelect" class="category-select" aria-label="Recording category">
+						<option value="School presentation" selected>School presentation</option>
+						<option value="Private use">Private use</option>
+						<option value="Other">Other</option>
+						<option value="Create new category">Create new category</option>
+					</select>
+				</div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 SF Crime Data Analysis Portfolio</p>
-        <p>Data-driven insights for urban safety and community awareness</p>
-    </footer>
+				<div class="confirm-actions">
+					<button class="action-btn delete" id="deleteButton" aria-label="Discard recording" title="Discard">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M4.5 7.5h15" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+							<path d="M9 7.5V5.8h6v1.7" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+							<path d="M7.3 7.5l1 11a1.8 1.8 0 0 0 1.8 1.5h4a1.8 1.8 0 0 0 1.8-1.5l1-11" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</button>
+					<button class="action-btn save" id="saveButton" aria-label="Save recording" title="Save">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M5 12.5l5 5 9-10" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</button>
+				</div>
+				<p class="save-status" id="saveStatus" aria-live="polite"></p>
+			</div>
+		</section>
+
+		<nav class="bottom-nav" aria-label="Primary navigation">
+			<svg class="icon profile" viewBox="0 0 24 24" aria-hidden="true">
+				<circle cx="12" cy="8" r="3.7" />
+				<path d="M4 19c1.9-2.8 4.8-4.2 8-4.2s6.1 1.4 8 4.2" />
+				<circle cx="12" cy="12" r="10" />
+			</svg>
+
+			<svg class="record-icon" viewBox="0 0 36 36" aria-hidden="true">
+				<circle cx="18" cy="18" r="15.2" fill="#ffffff" stroke="#ff0000" stroke-width="3" />
+				<circle cx="18" cy="18" r="9.2" fill="#ff0000" stroke="none" />
+			</svg>
+
+			<svg class="icon home" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M3.2 10.2L12 3.3l8.8 6.9V21H3.2z" />
+			</svg>
+
+			<svg class="icon search" viewBox="0 0 24 24" aria-hidden="true">
+				<circle cx="10.5" cy="10.5" r="7" />
+				<line x1="16" y1="16" x2="21" y2="21" />
+				<line x1="7.8" y1="11" x2="7.8" y2="13.5" />
+				<line x1="10.5" y1="8" x2="10.5" y2="13.5" />
+				<line x1="13.2" y1="9.8" x2="13.2" y2="13.5" />
+			</svg>
+
+			<svg class="icon folder" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M3 8h6.5l1.7 2H21v8.3A1.7 1.7 0 0 1 19.3 20H4.7A1.7 1.7 0 0 1 3 18.3z" />
+			</svg>
+		</nav>
+	</main>
+	<script>
+		const idleView = document.getElementById("idleView");
+		const recordingView = document.getElementById("recordingView");
+		const confirmView = document.getElementById("confirmView");
+		const pageTitle = document.getElementById("pageTitle");
+		const startButton = document.getElementById("startButton");
+		const pauseButton = document.getElementById("pauseButton");
+		const stopButton = document.getElementById("stopButton");
+		const deleteButton = document.getElementById("deleteButton");
+		const saveButton = document.getElementById("saveButton");
+		const editNameButton = document.getElementById("editNameButton");
+		const previewPlayButton = document.getElementById("previewPlayButton");
+		const previewTime = document.getElementById("previewTime");
+		const saveStatus = document.getElementById("saveStatus");
+		const timerDisplay = document.getElementById("timerDisplay");
+		const stepRecord = document.getElementById("stepRecord");
+		const stepConfirm = document.getElementById("stepConfirm");
+		const stepLearn = document.getElementById("stepLearn");
+		const audioPreview = document.getElementById("audioPreview");
+		const recordingName = document.getElementById("recordingName");
+		const previewWaveform = document.getElementById("previewWaveform");
+		const previewCtx = previewWaveform.getContext("2d");
+		const waveformCanvas = document.getElementById("waveform");
+		const canvasCtx = waveformCanvas.getContext("2d");
+
+		let stream;
+		let mediaRecorder;
+		let audioContext;
+		let analyser;
+		let dataArray;
+		let animationFrameId;
+		let timerIntervalId;
+		let recordingStartMs = 0;
+		let elapsedBeforePauseMs = 0;
+		let isPaused = false;
+		let waveformPeaks = [];
+		let lastPeakCaptureAt = 0;
+		let recordedChunks = [];
+		let recordedAudioBlob = null;
+		let recordedAudioUrl = "";
+		let recordedDurationMs = 0;
+		let recordingIndex = 132;
+		let isSaving = false;
+
+		const PEAK_CAPTURE_INTERVAL_MS = 45;
+		const MAX_STORED_PEAKS = 50000;
+		const WAVEFORM_BAR_SPACING = 3;
+
+		function setStep(stepName) {
+			stepRecord.classList.toggle("active", stepName === "record");
+			stepConfirm.classList.toggle("active", stepName === "confirm");
+			stepLearn.classList.toggle("active", stepName === "learn");
+		}
+
+		function setPreviewAudio(blob) {
+			recordedAudioBlob = blob;
+
+			if (recordedAudioUrl) {
+				audioPreview.pause();
+				URL.revokeObjectURL(recordedAudioUrl);
+				recordedAudioUrl = "";
+			}
+
+			if (!blob) {
+				audioPreview.removeAttribute("src");
+				audioPreview.load();
+				previewTime.textContent = "00:00";
+				updatePreviewPlayButton(false);
+				return;
+			}
+
+			recordedAudioUrl = URL.createObjectURL(blob);
+			audioPreview.src = recordedAudioUrl;
+			audioPreview.load();
+		}
+
+		function setSaveStatus(message, isError = false) {
+			saveStatus.textContent = message || "";
+			saveStatus.classList.toggle("error", Boolean(isError));
+		}
+
+		function setSavingState(isProcessing) {
+			isSaving = isProcessing;
+			saveButton.disabled = isProcessing;
+			deleteButton.disabled = isProcessing;
+			previewPlayButton.disabled = isProcessing;
+		}
+
+		function sanitizeFilename(value) {
+			const base = (value || "recording").trim();
+			const cleaned = base.replace(/[^A-Za-z0-9_-]+/g, "_").replace(/_+/g, "_").replace(/^_+|_+$/g, "");
+			return cleaned || "recording";
+		}
+
+		function audioBufferToWavBlob(audioBuffer) {
+			const channels = 1;
+			const sampleRate = audioBuffer.sampleRate;
+			const source = audioBuffer.numberOfChannels > 1
+				? audioBuffer.getChannelData(0)
+				: audioBuffer.getChannelData(0);
+
+			const bytesPerSample = 2;
+			const dataSize = source.length * bytesPerSample;
+			const headerSize = 44;
+			const buffer = new ArrayBuffer(headerSize + dataSize);
+			const view = new DataView(buffer);
+
+			function writeAscii(offset, text) {
+				for (let i = 0; i < text.length; i += 1) {
+					view.setUint8(offset + i, text.charCodeAt(i));
+				}
+			}
+
+			writeAscii(0, "RIFF");
+			view.setUint32(4, 36 + dataSize, true);
+			writeAscii(8, "WAVE");
+			writeAscii(12, "fmt ");
+			view.setUint32(16, 16, true);
+			view.setUint16(20, 1, true);
+			view.setUint16(22, channels, true);
+			view.setUint32(24, sampleRate, true);
+			view.setUint32(28, sampleRate * channels * bytesPerSample, true);
+			view.setUint16(32, channels * bytesPerSample, true);
+			view.setUint16(34, 8 * bytesPerSample, true);
+			writeAscii(36, "data");
+			view.setUint32(40, dataSize, true);
+
+			let offset = 44;
+			for (let i = 0; i < source.length; i += 1) {
+				const s = Math.max(-1, Math.min(1, source[i]));
+				view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+				offset += 2;
+			}
+
+			return new Blob([buffer], { type: "audio/wav" });
+		}
+
+		async function convertBlobToWav(blob) {
+			if (!blob) {
+				throw new Error("No recorded audio found.");
+			}
+
+			if (blob.type === "audio/wav") {
+				return blob;
+			}
+
+			const arrayBuffer = await blob.arrayBuffer();
+			const context = new (window.AudioContext || window.webkitAudioContext)();
+			try {
+				const decoded = await context.decodeAudioData(arrayBuffer.slice(0));
+				return audioBufferToWavBlob(decoded);
+			} finally {
+				if (context.state !== "closed") {
+					await context.close();
+				}
+			}
+		}
+
+		function updatePreviewPlayButton(isPlaying) {
+			previewPlayButton.innerHTML = isPlaying
+				? `
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<rect x="6" y="4" width="4.2" height="16" rx="2" fill="#ffffff"></rect>
+						<rect x="13.8" y="4" width="4.2" height="16" rx="2" fill="#ffffff"></rect>
+					</svg>
+				`
+				: `
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M8 5.5L18 12L8 18.5a2 2 0 0 1-3-1.7V7.2a2 2 0 0 1 3-1.7z" fill="#ffffff"></path>
+					</svg>
+				`;
+		}
+
+		function renderPreviewWaveform() {
+			const { width, height } = previewWaveform;
+			previewCtx.clearRect(0, 0, width, height);
+			previewCtx.strokeStyle = "#21afa2";
+			previewCtx.lineWidth = 2;
+
+			if (!waveformPeaks.length) {
+				previewCtx.beginPath();
+				previewCtx.moveTo(0, height / 2);
+				previewCtx.lineTo(width, height / 2);
+				previewCtx.stroke();
+				return;
+			}
+
+			const centerY = height / 2;
+			const spacing = 3;
+			const maxBars = Math.max(1, Math.floor((width - 2) / spacing));
+			const bars = compressPeaksForBars(waveformPeaks, maxBars);
+
+			previewCtx.beginPath();
+			for (let i = 0; i < bars.length; i += 1) {
+				const x = 1 + i * spacing;
+				const barHeight = Math.max(2, bars[i] * (height * 0.44));
+				previewCtx.moveTo(x, centerY - barHeight);
+				previewCtx.lineTo(x, centerY + barHeight);
+			}
+			previewCtx.stroke();
+		}
+
+		function getFinalElapsedMs() {
+			const runningMs = recordingStartMs ? Date.now() - recordingStartMs : 0;
+			return elapsedBeforePauseMs + runningMs;
+		}
+
+		function syncHeaderWithName() {
+			const cleanName = recordingName.value.trim();
+			if (!confirmView.hidden && cleanName) {
+				pageTitle.textContent = cleanName;
+			}
+		}
+
+		function formatTime(ms) {
+			const totalSeconds = Math.floor(ms / 1000);
+			const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+			const seconds = String(totalSeconds % 60).padStart(2, "0");
+			return `${minutes}:${seconds}`;
+		}
+
+		function updateTimer() {
+			if (!recordingStartMs) {
+				timerDisplay.textContent = "00:00";
+				return;
+			}
+			const runningElapsed = Date.now() - recordingStartMs;
+			timerDisplay.textContent = formatTime(elapsedBeforePauseMs + runningElapsed);
+		}
+
+		function drawIdleWaveformLine() {
+			const { width, height } = waveformCanvas;
+			canvasCtx.clearRect(0, 0, width, height);
+			canvasCtx.strokeStyle = "#1e8486";
+			canvasCtx.lineWidth = 2;
+			canvasCtx.beginPath();
+			canvasCtx.moveTo(0, height / 2);
+			canvasCtx.lineTo(width, height / 2);
+			canvasCtx.stroke();
+		}
+
+		function pushCurrentPeak() {
+			if (!analyser || !dataArray) {
+				return;
+			}
+
+			analyser.getByteTimeDomainData(dataArray);
+			let peak = 0;
+			for (let i = 0; i < dataArray.length; i += 1) {
+				const normalized = Math.abs((dataArray[i] - 128) / 128);
+				if (normalized > peak) {
+					peak = normalized;
+				}
+			}
+
+			waveformPeaks.push(peak);
+			if (waveformPeaks.length > MAX_STORED_PEAKS) {
+				waveformPeaks = waveformPeaks.slice(-MAX_STORED_PEAKS);
+			}
+		}
+
+		function compressPeaksForBars(source, maxBars) {
+			if (source.length <= maxBars) {
+				return source;
+			}
+
+			const compressed = [];
+			for (let bar = 0; bar < maxBars; bar += 1) {
+				const start = Math.floor((bar * source.length) / maxBars);
+				const end = Math.floor(((bar + 1) * source.length) / maxBars);
+				let bucketPeak = 0;
+
+				for (let i = start; i < end; i += 1) {
+					if (source[i] > bucketPeak) {
+						bucketPeak = source[i];
+					}
+				}
+
+				compressed.push(bucketPeak);
+			}
+
+			return compressed;
+		}
+
+		function renderWaveformHistory() {
+			const { width, height } = waveformCanvas;
+			if (!waveformPeaks.length) {
+				drawIdleWaveformLine();
+				return;
+			}
+
+			canvasCtx.clearRect(0, 0, width, height);
+			canvasCtx.strokeStyle = "#1e8486";
+			canvasCtx.lineWidth = 2;
+
+			const centerY = height / 2;
+			const maxBars = Math.max(1, Math.floor((width - 2) / WAVEFORM_BAR_SPACING));
+			const bars = compressPeaksForBars(waveformPeaks, maxBars);
+
+			canvasCtx.beginPath();
+			for (let i = 0; i < bars.length; i += 1) {
+				const x = 1 + i * WAVEFORM_BAR_SPACING;
+				const barHeight = Math.max(3, bars[i] * (height * 0.46));
+				canvasCtx.moveTo(x, centerY - barHeight);
+				canvasCtx.lineTo(x, centerY + barHeight);
+			}
+			canvasCtx.stroke();
+
+			const isCompressed = waveformPeaks.length > maxBars;
+			const endX = isCompressed ? width - 1 : Math.min(width - 1, 1 + (bars.length - 1) * WAVEFORM_BAR_SPACING);
+			canvasCtx.beginPath();
+			canvasCtx.moveTo(endX, 8);
+			canvasCtx.lineTo(endX, height - 8);
+			canvasCtx.stroke();
+		}
+
+		function drawWaveform() {
+			if (!analyser) {
+				renderWaveformHistory();
+				animationFrameId = requestAnimationFrame(drawWaveform);
+				return;
+			}
+
+			const now = performance.now();
+			if (!isPaused && now - lastPeakCaptureAt >= PEAK_CAPTURE_INTERVAL_MS) {
+				pushCurrentPeak();
+				lastPeakCaptureAt = now;
+			}
+
+			renderWaveformHistory();
+			animationFrameId = requestAnimationFrame(drawWaveform);
+		}
+
+		function showRecordingView() {
+			idleView.hidden = true;
+			recordingView.hidden = false;
+			confirmView.hidden = true;
+			pageTitle.textContent = "New recording";
+			setStep("record");
+			document.body.classList.add("is-recording");
+		}
+
+		function showIdleView() {
+			confirmView.hidden = true;
+			recordingView.hidden = true;
+			idleView.hidden = false;
+			pageTitle.textContent = "New recording";
+			setStep("record");
+			document.body.classList.remove("is-recording");
+		}
+
+		function showConfirmView() {
+			idleView.hidden = true;
+			recordingView.hidden = true;
+			confirmView.hidden = false;
+			syncHeaderWithName();
+			renderPreviewWaveform();
+			previewTime.textContent = formatTime(recordedDurationMs);
+			setStep("confirm");
+			document.body.classList.remove("is-recording");
+		}
+
+		function resetUiAfterStop() {
+			isPaused = false;
+			pauseButton.setAttribute("aria-label", "Pause recording");
+			pauseButton.title = "Pause";
+			pauseButton.innerHTML = `
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<rect x="6" y="4" width="4.2" height="16" rx="2" fill="#ffffff"></rect>
+					<rect x="13.8" y="4" width="4.2" height="16" rx="2" fill="#ffffff"></rect>
+				</svg>
+			`;
+			timerDisplay.textContent = "00:00";
+			drawIdleWaveformLine();
+		}
+
+		function stopTracks() {
+			if (stream) {
+				stream.getTracks().forEach((track) => track.stop());
+				stream = null;
+			}
+		}
+
+		async function startRecording() {
+			setSaveStatus("");
+
+			try {
+				stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+			} catch (error) {
+				alert("Microphone access is required to record.");
+				return;
+			}
+
+			audioContext = new (window.AudioContext || window.webkitAudioContext)();
+			const source = audioContext.createMediaStreamSource(stream);
+			analyser = audioContext.createAnalyser();
+			analyser.fftSize = 256;
+			dataArray = new Uint8Array(analyser.frequencyBinCount);
+			source.connect(analyser);
+
+			if (typeof MediaRecorder !== "undefined") {
+				recordedChunks = [];
+				recordedDurationMs = 0;
+				setPreviewAudio(null);
+				mediaRecorder = new MediaRecorder(stream);
+				mediaRecorder.addEventListener("dataavailable", (event) => {
+					if (event.data && event.data.size > 0) {
+						recordedChunks.push(event.data);
+					}
+				});
+				mediaRecorder.addEventListener("stop", () => {
+					const mimeType = mediaRecorder && mediaRecorder.mimeType ? mediaRecorder.mimeType : "audio/webm";
+					const audioBlob = recordedChunks.length ? new Blob(recordedChunks, { type: mimeType }) : null;
+					setPreviewAudio(audioBlob);
+				});
+				mediaRecorder.start();
+			}
+
+			recordingStartMs = Date.now();
+			elapsedBeforePauseMs = 0;
+			waveformPeaks = [];
+			lastPeakCaptureAt = 0;
+			timerIntervalId = setInterval(updateTimer, 200);
+			updateTimer();
+
+			showRecordingView();
+			drawWaveform();
+		}
+
+		async function togglePause() {
+			if (!stream) {
+				return;
+			}
+
+			if (!isPaused) {
+				isPaused = true;
+				elapsedBeforePauseMs += Date.now() - recordingStartMs;
+				recordingStartMs = 0;
+				clearInterval(timerIntervalId);
+
+				if (audioContext && audioContext.state === "running") {
+					await audioContext.suspend();
+				}
+
+				if (mediaRecorder && mediaRecorder.state === "recording") {
+					mediaRecorder.pause();
+				}
+
+				pauseButton.setAttribute("aria-label", "Resume recording");
+				pauseButton.title = "Resume";
+				pauseButton.innerHTML = `
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M8 5.5L18 12L8 18.5a2 2 0 0 1-3-1.7V7.2a2 2 0 0 1 3-1.7z" fill="#ffffff"></path>
+					</svg>
+				`;
+				return;
+			}
+
+			isPaused = false;
+			recordingStartMs = Date.now();
+			timerIntervalId = setInterval(updateTimer, 200);
+
+			if (audioContext && audioContext.state === "suspended") {
+				await audioContext.resume();
+			}
+
+			if (mediaRecorder && mediaRecorder.state === "paused") {
+				mediaRecorder.resume();
+			}
+
+			pauseButton.setAttribute("aria-label", "Pause recording");
+			pauseButton.title = "Pause";
+			pauseButton.innerHTML = `
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+					<rect x="6" y="4" width="4.2" height="16" rx="2" fill="#ffffff"></rect>
+					<rect x="13.8" y="4" width="4.2" height="16" rx="2" fill="#ffffff"></rect>
+				</svg>
+			`;
+		}
+
+		function stopRecording() {
+			if (!stream) {
+				return;
+			}
+
+			recordedDurationMs = getFinalElapsedMs();
+
+			if (mediaRecorder && mediaRecorder.state !== "inactive") {
+				mediaRecorder.stop();
+			}
+
+			clearInterval(timerIntervalId);
+			cancelAnimationFrame(animationFrameId);
+
+			if (audioContext && audioContext.state !== "closed") {
+				audioContext.close();
+			}
+
+			stopTracks();
+
+			mediaRecorder = null;
+			audioContext = null;
+			analyser = null;
+			dataArray = null;
+			recordingStartMs = 0;
+			elapsedBeforePauseMs = 0;
+			recordingIndex += 1;
+			recordingName.value = `Recording_${recordingIndex}`;
+
+			showConfirmView();
+			resetUiAfterStop();
+		}
+
+		function clearPreviewAndReturnToIdle() {
+			setPreviewAudio(null);
+			recordedChunks = [];
+			recordedDurationMs = 0;
+			setSaveStatus("");
+			showIdleView();
+		}
+
+		async function saveRecording() {
+			if (isSaving) {
+				return;
+			}
+
+			if (!recordedAudioBlob) {
+				setSaveStatus("No recording to save yet.", true);
+				return;
+			}
+
+			setSavingState(true);
+			setSaveStatus("Uploading and processing recording...");
+
+			try {
+				const wavBlob = await convertBlobToWav(recordedAudioBlob);
+				const safeName = sanitizeFilename(recordingName.value);
+				const formData = new FormData();
+				formData.append("audio", wavBlob, `${safeName}.wav`);
+				formData.append("recording_name", recordingName.value.trim() || "Recording");
+				formData.append("category", document.getElementById("categorySelect").value || "");
+
+				const response = await fetch("/api/process-recording", {
+					method: "POST",
+					body: formData,
+				});
+
+				let payload = null;
+				try {
+					payload = await response.json();
+				} catch (parseError) {
+					payload = null;
+				}
+
+				if (!response.ok || !payload || !payload.ok) {
+					const message = payload && payload.error ? payload.error : "Processing failed on server.";
+					throw new Error(message);
+				}
+
+				const result = payload.result || {};
+				const wpmText = Number.isFinite(result.wpm) ? result.wpm.toFixed(2) : "n/a";
+				setStep("learn");
+				setSaveStatus(`Saved and processed. WPM: ${wpmText}`);
+				clearPreviewAndReturnToIdle();
+			} catch (error) {
+				setSaveStatus(error.message || "Could not save and process recording.", true);
+			} finally {
+				setSavingState(false);
+			}
+		}
+
+		function togglePreviewPlayback() {
+			if (!audioPreview.src) {
+				return;
+			}
+
+			if (audioPreview.paused) {
+				audioPreview.play();
+				return;
+			}
+
+			audioPreview.pause();
+		}
+
+		startButton.addEventListener("click", startRecording);
+		pauseButton.addEventListener("click", togglePause);
+		stopButton.addEventListener("click", stopRecording);
+		deleteButton.addEventListener("click", clearPreviewAndReturnToIdle);
+		saveButton.addEventListener("click", saveRecording);
+		recordingName.addEventListener("input", syncHeaderWithName);
+		editNameButton.addEventListener("click", () => recordingName.focus());
+		previewPlayButton.addEventListener("click", togglePreviewPlayback);
+		audioPreview.addEventListener("play", () => updatePreviewPlayButton(true));
+		audioPreview.addEventListener("pause", () => updatePreviewPlayButton(false));
+		audioPreview.addEventListener("ended", () => updatePreviewPlayButton(false));
+		audioPreview.addEventListener("loadedmetadata", () => {
+			if (Number.isFinite(audioPreview.duration)) {
+				previewTime.textContent = formatTime(audioPreview.duration * 1000);
+			}
+		});
+
+		drawIdleWaveformLine();
+		renderPreviewWaveform();
+	</script>
 </body>
 </html>
